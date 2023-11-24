@@ -38,7 +38,9 @@ class OrderResource extends Resource
                             name: 'categories',
                             titleAttribute: 'name',
                         )->multiple()
-                    ])->addAction(fn(Action $action)=>$action->form([
+                    ])
+                    // here is the issue, works again if you comment out the addAction
+                    ->addAction(fn(Action $action)=>$action->form([
                         TextInput::make('name'),
                         Select::make('categories')->relationship(
                             name: 'categories',
